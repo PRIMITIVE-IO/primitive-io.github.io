@@ -1,3 +1,3 @@
-# Headline
+# Primitive.io Documentation
 
-> An awesome project.
+> For all the information, visit documentation.primitive.io
