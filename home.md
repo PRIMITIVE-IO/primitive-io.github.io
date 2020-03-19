@@ -1,5 +1,5 @@
 <p align=center>
-    <img src="/_media/primitive_logo.png" height="100px">
+    <img src="/_media/primitive_logo.png" style="height=100px; width=auto;">
 </p>
 
 # Welcome to Primitive!
