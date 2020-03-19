@@ -10,4 +10,4 @@
   * [Docker Setup](/docs/private/docker-setup.md)
   * [Running Scraper in Docker](/docs/private/docker-usage.md)
   * [Environment File](/docs/private/environment-file.md)
-  * [Volume](docs/private/volume.md)
+  * [Volume](/docs/private/volume.md)
