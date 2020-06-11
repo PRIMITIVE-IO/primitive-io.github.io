@@ -8,12 +8,22 @@ The private scraper relies on two main elements to run properly: a location to s
 - See information related to environment file [here](/docs/private/environment-file.md)
 - See information for required volume [here](/docs/private/volume.md)
 
+# Importing Image from Archive
+
+Docker images can be saved and archived for easier transport. The scraper image can be distributed via a ".tar" file rather than pulled from a registry.
+
+```
+docker load --input primitive_scraper.tar
+```
+
+Once loaded, the image should be viewable with 'docker images.' Once imported with the load command, the container can be run as outlined in following sections.
+
 # Running Container
 
 Once the scraper container is pulled and available to the local machine, the container can be ran. Below is an example of the command required for the scraper to execute properly.
 
 ```
-docker run -d -p 80:3000 --env-file="env.file" -v /tmp/primitive/data:/srv/primitive/data --name primitive_2.0 primitive:latest
+docker run -d -p 3000:3000 --env-file="env.file" -v /tmp/primitive/data:/srv/primitive/data --name primitive_2.0 primitive:latest
 ```
 
 See below for explaination of run command flags and options:
@@ -23,6 +33,8 @@ See below for explaination of run command flags and options:
 - **-v** - Mount a volume to the container. Because the scraper pulls data from your git service and saves assets to be served to the Primitive client, data persistence is important. In the example above, we are mounting a local directory (/tmp/primitive/data) to a folder inside the container(/srv/primitive/data). By doing this, the database and scraped assets will be stored outside the container and available on the local machine. Make sure that the local directory is present when running the container.
 - **-name** - This will be the name of the running container. It is best to name this something that represents the function and includes the versioning.
 - The last value is the image name. This will be the name of the image pulled from the registry and include the specific version being used (the example shows :latest but this may very well me a specific version.)
+
+<em> ** NOTE: Due to the websocket calls from the admin panel, port 3000 should be used for versions below 4.0 ** </em>
 
 # Monitoring Containers
 
