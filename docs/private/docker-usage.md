@@ -26,9 +26,14 @@ Once the scraper container is pulled and available to the local machine, the con
 docker run -d -p 3000:3000 --env-file="env.file" -v /tmp/primitive/data:/srv/primitive/data --name primitive_2.0 primitive:latest
 ```
 
-See below for explaination of run command flags and options:
+Important information:
+- For versions under v4.0, ports should remain 3000:3000 so the admin panel can comunicate with the scraper.
+- The volume information follows the format "local:container." This means that the first path should exist on the local machine.
+- The volume is used to persist data and the database. Choose a non-temporary directory.
+
+See below for additional explaination of command flags and options:
 - **'-d'** - Run the process as a daemon. Without this command, the container will execute and bind to the console. This can be removed for testing if something is failing with the run command.
-- **'-p'** - Publish or expose a specific port. In the example, port 80 is being bound to port 3000 within the container. Since our scraper listens on port 3000, the first value in the port flag can be changed to accomodate different environments (e.g., 8083:3000).
+- **'-p'** - Publish or expose a specific port.
 - **--env-file** - This is an important one. This injects the variables found in the env file into the environment within the container. This will include environment specific information and git service credentials.
 - **-v** - Mount a volume to the container. Because the scraper pulls data from your git service and saves assets to be served to the Primitive client, data persistence is important. In the example above, we are mounting a local directory (/tmp/primitive/data) to a folder inside the container(/srv/primitive/data). By doing this, the database and scraped assets will be stored outside the container and available on the local machine. Make sure that the local directory is present when running the container.
 - **-name** - This will be the name of the running container. It is best to name this something that represents the function and includes the versioning.
