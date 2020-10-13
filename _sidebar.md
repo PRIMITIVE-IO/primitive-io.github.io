@@ -15,3 +15,7 @@
 * Private Scraper Usage
   * [Usage](/docs/private/scraper-usage.md)
   * [Troubleshooting](/docs/private/scraper-troubleshooting.md)
+
+* Photon Local Server Installation
+  * [Overview](/docs/photon/photon-overview.md)
+  * [Installation](/docs/photon/local-installation.md)
