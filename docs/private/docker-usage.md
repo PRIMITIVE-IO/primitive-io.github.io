@@ -4,7 +4,7 @@ The private scraper is best run inside of Docker. This allows for consistency ac
 
 # Required Configuration
 
-The private scraper relies on two main elements to run properly: a location to store the internal database and an environment file.
+The private scraper relies on two main elements to run properly: a location to store the internal database and an configuration file (config.json). The configuration file will be in the data folder which is used to store data associated with the scraper.
 - See information related to environment file [here](/docs/private/environment-file.md)
 - See information for required volume [here](/docs/private/volume.md)
 
@@ -23,7 +23,7 @@ Once loaded, the image should be viewable with 'docker images.' Once imported wi
 Once the scraper container is pulled and available to the local machine, the container can be ran. Below is an example of the command required for the scraper to execute properly.
 
 ```
-docker run -d -p 3000:3000 --env-file="env.file" -v /tmp/primitive/data:/srv/primitive/data --name primitive_2.0 primitive:latest
+docker run -d -p 443:443 -v /home/scraper/data:/srv/primitive/data -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp --name primitive_1.0 --restart unless-stopped private_scraper:1.0
 ```
 
 Important information:
@@ -34,9 +34,9 @@ Important information:
 See below for additional explaination of command flags and options:
 - **'-d'** - Run the process as a daemon. Without this command, the container will execute and bind to the console. This can be removed for testing if something is failing with the run command.
 - **'-p'** - Publish or expose a specific port.
-- **--env-file** - This is an important one. This injects the variables found in the env file into the environment within the container. This will include environment specific information and git service credentials.
 - **-v** - Mount a volume to the container. Because the scraper pulls data from your git service and saves assets to be served to the Primitive client, data persistence is important. In the example above, we are mounting a local directory (/tmp/primitive/data) to a folder inside the container(/srv/primitive/data). By doing this, the database and scraped assets will be stored outside the container and available on the local machine. Make sure that the local directory is present when running the container.
 - **-name** - This will be the name of the running container. It is best to name this something that represents the function and includes the versioning.
+- **-restart** - This is the restart policy. We can set this to `unless-stopped` to have the container restart if the dependent application or process crashes.
 - The last value is the image name. This will be the name of the image pulled from the registry and include the specific version being used (the example shows :latest but this may very well me a specific version.)
 
 <em> ** NOTE: Due to the websocket calls from the admin panel, port 3000 should be used for versions below 4.0 ** </em>
