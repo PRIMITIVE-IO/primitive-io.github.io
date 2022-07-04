@@ -1,8 +1,10 @@
 * Home
   * [Home](/home.md)
 
-* Github Browser
-  * [Setup](/docs/primitive-setup.md)
+* Cloud Platform
+  * [General](/docs/cloud/general.md)
+  * [Bitbucket App Passwords](/docs/cloud/bitbucket-tokens.md)
+  * [GitLab Access Token](/docs/cloud/gitlab-tokens.md)
 
 * Private Scraper Setup
   * [Requirements](/docs/private/requirements.md)
