@@ -33,5 +33,4 @@ Primitive requires READ access to:
 
 These permissions are used to access what repositories you have access to analyze, information on permissions, and to clone the repository in order to complete the code analysis.
 
-<p><img src="/_media/bitbucketAppPasswordCreation.png" style="width: 90%; border: 1px solid #000;
-"></p>
+<p><img src="/_media/bitbucketAppPasswordCreation.png" style="width: 90%; border: 1px solid #000;"></p>

@@ -5,6 +5,7 @@
   * [General](/docs/cloud/general.md)
   * [Bitbucket App Passwords](/docs/cloud/bitbucket-tokens.md)
   * [GitLab Access Token](/docs/cloud/gitlab-tokens.md)
+  * [GitHub Access Token](/docs/cloud/github-tokens.md)
 
 * Private Scraper Setup
   * [Requirements](/docs/private/requirements.md)
